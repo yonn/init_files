@@ -12,12 +12,17 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+(global-set-key (kbd "C-x O") 'previous-multiframe-window)
+
 (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 (require 'solarized-theme)
 (customize-set-variable 'frame-background-mode 'dark)
 (load-theme 'solarized t)
 
 (defalias 'terminal 'ansi-term)
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
 
 (defun play-typewriter-sound ()
   (let ((data-directory "~/.emacs.d/Sounds"))
