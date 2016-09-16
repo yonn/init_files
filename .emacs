@@ -21,6 +21,9 @@
 
 (defalias 'terminal 'ansi-term)
 
+(require 'helm-config)
+(global-set-key (kbd "M-x") 'helm-M-x)
+
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
@@ -52,13 +55,21 @@
 (require 'ido)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
-(ido-mode 'buffers) ;; only use this line to turn off ido for file names!
+(ido-mode 1)
 (setq ido-ignore-buffers '("^ " "*Completions*" "*Shell Command Output*"
                "*Messages*" "Async Shell Command"))
 
+(defun c++-custom-keywords ()
+  (font-lock-add-keywords nil `(("\\<\\(nullptr\\)" . 'font-lock-keyword-face))))
+
+(add-hook 'c++-mode-hook 'c++-custom-keywords)
+
 (setq confirm-nonexistent-file-or-buffer nil)
 
-;(ac-config-default)
+;(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;(eval-after-load 'flycheck
+;  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
@@ -68,6 +79,8 @@
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
+
+
 
 (defun my-irony-mode-hook ()
   (define-key irony-mode-map [remap completion-at-point]
