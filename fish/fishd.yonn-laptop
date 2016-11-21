@@ -30,4 +30,4 @@ SET fish_pager_color_completion:normal
 SET fish_pager_color_description:555\x1eyellow
 SET fish_pager_color_prefix:cyan
 SET fish_pager_color_progress:cyan
-SET fish_user_paths:/home/yonn/UserBin/android\x2dstudio/bin\x1e/home/yonn/\x2enimble/bin\x1e/home/yonn/UserBin/nim\x2d0\x2e14\x2e2/bin
+SET fish_user_paths:PATH

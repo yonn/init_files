@@ -12,3 +12,8 @@ set foldmethod=indent " enable folding of code blocks
 set foldlevel=99 
                     "allow folding by pressing space
 nnoremap <space> za
+
+" set cursor shapes by mode
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"

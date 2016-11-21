@@ -27,6 +27,8 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
+(require 'smartparens-config)
+
 (defun play-typewriter-sound ()
   (let ((data-directory "~/.emacs.d/Sounds"))
     (play-sound `(sound :file "typewriter-new.wav"))))
@@ -40,7 +42,7 @@
 (require 'evil)
 (evil-mode t)
 
-(require 'helm-config)
+(evil-set-initial-state 'terminal 'emacs)
 
 (setq c-default-style "linux"
       tab-width 8
@@ -64,12 +66,9 @@
 
 (add-hook 'c++-mode-hook 'c++-custom-keywords)
 
+(add-hook 'c++-mode-hook #'smartparens-mode)
+
 (setq confirm-nonexistent-file-or-buffer nil)
-
-;(add-hook 'after-init-hook #'global-flycheck-mode)
-
-;(eval-after-load 'flycheck
-;  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
@@ -90,34 +89,6 @@
 (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
-;(add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
-(setq auto-mode-alist
-      (append '(("\\.ml[ily]?$" . tuareg-mode)
-                ("\\.topml$" . tuareg-mode))
-              auto-mode-alist)) 
-(autoload 'utop-minor-mode "utop" "Toplevel for OCaml" t)
-;(add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
-(add-hook 'tuareg-mode-hook 'merlin-mode)
-(setq merlin-use-auto-complete-mode t)
-(setq merlin-error-after-save nil)
-
-(add-to-list 'load-path "~/.opam/4.03.0/share/emacs/site-lisp")
-(require 'ocp-indent)
-(require 'merlin)
-
-(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
- (when (and opam-share (file-directory-p opam-share))
-  (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
-  (autoload 'merlin-mode "merlin" nil t nil)
-  (add-hook 'tuareg-mode-hook 'merlin-mode t)
-  (add-hook 'caml-mode-hook 'merlin-mode t)
-  (setq merlin-command 'opam)))
-
-(setq inferior-lisp-program "/usr/bin/sbcl")
-(setq slime-contribs '(slime-fancy))
-
-(slime-setup '(slime-fancy slime-company))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -132,6 +103,7 @@
  '(custom-safe-themes
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(frame-background-mode (quote dark))
  '(inhibit-startup-screen t)
  '(send-mail-function (quote mailclient-send-it)))
 (custom-set-faces
