@@ -2,6 +2,7 @@
 # Do NOT edit it directly, your changes will be overwritten.
 SET __fish_classic_git_prompt_initialized:\x1d
 SET __fish_init_1_50_0:\x1d
+SET __fish_init_2_39_8:\x1d
 SET __fish_init_2_3_0:\x1d
 SET fish_color_autosuggestion:555
 SET fish_color_command:005fd7
@@ -30,4 +31,4 @@ SET fish_pager_color_completion:normal
 SET fish_pager_color_description:555\x1eyellow
 SET fish_pager_color_prefix:cyan
 SET fish_pager_color_progress:cyan
-SET fish_user_paths:PATH
+SET fish_user_paths:/home/yonn/\x2erakudobrew/moar\x2dnom/install/share/perl6/site/bin\x1e/home/yonn/\x2erakudobrew/bin/\x1ePATH

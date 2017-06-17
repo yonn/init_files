@@ -1,9 +1,13 @@
+#function fish_prompt
+#	if test $TERM = xterm-256color
+#		fish_prompt_reg
+#	else
+#		fish_prompt_bas
+#	end
+#end
+
 function fish_prompt
-	if test $TERM = xterm-256color
-		fish_prompt_reg
-	else
-		fish_prompt_bas
-	end
+	fish_prompt_reg
 end
 
 function fish_prompt_bas
